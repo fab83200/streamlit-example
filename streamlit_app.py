@@ -1,26 +1,42 @@
 import streamlit as st
-import pandas as pd
 
-col1, buffer_column, col2 = st.columns([2, .5, 2])                    # sets up columns of standard width where sum is the total width
-features_available = ['Option1', 'Option2', 'Option3']                # sets the available features
-next = st.button("Next Option")                                       # creates an on_click button with label "Next..." and named `next`
+st.subheader("Numerical Slider")
+x = st.slider('Select a number to be squared:', 1, 10, key='my_slider', value=[2, 4])
+st.write(x[0], 'squared is', x[0] * x[0])
+st.write(x[1], 'squared is', x[1] * x[1])
 
-if next:                                                              # creates the rotary effect on the radio_button
-  if st.session_state.radio_button == 'Option1':
-    st.session_state.radio_button = 'Option2'
-  elif st.session_state.radio_button == 'Option2':
-    st.session_state.radio_button = 'Option3'
-  else:
-    st.session_state.radio_button = 'Option1'
+st.subheader("Discrete Slider")
+rainbow_colors = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', ]
+first_color, second_color = st.select_slider(label='Select 2 colors',
+                                      options=rainbow_colors,
+                                      value=['orange', 'green'])
+st.write(f"Your choice goes from {first_color} to {second_color}")
 
-radio_button = col1.radio("Pick an option:",                          # creates a Radio_Buttons widget labeled "Pick..." and named `radio_button`
-                    features_available,                               # creates as buttons as features declared
-                    key="radio_button")                               # names the radio button widget `radio_button`
+"st.session_state object:", st.session_state # store the state into a "key" then print it 
 
-if radio_button == 'Option1':                                         # conditions the outcome of picking up a radio_button
-  col2.write("You picked `Option1` Conclusion1")
-if radio_button == 'Option2':
-  col2.write("You picked `Option2` Conclusion2")
-if radio_button == 'Option3':
-  col2.write("You picked `Option3` Conclusion3")
+if 'my_boolean' not in st.session_state:                                        # if the variable doesn't exist, it stores it
+  st.session_state['my_boolean'] = True
+
+if 'my_counter' not in st.session_state:                                        # if the variable doesn't exist, it stores it
+  st.session_state['my_counter'] = 5
+
+button = st.button("Update Values")
+
+if button:
+  "Before pressing Button:"
+  st.write("  - The value of my counter is: ", st.session_state.my_counter)
+  st.write("  - The value of my boolean is: ", st.session_state.my_boolean)
+
+  st.session_state.my_counter += 1
+  st.session_state.my_boolean = not st.session_state.my_boolean
+
+  "After pressing Button:"
+  st.write("  - The value of my counter is: ", st.session_state.my_counter)
+  st.write("  - The value of my boolean is: ", st.session_state.my_boolean)
+
+for key in st.session_state.keys():
+  del st.session_state[key]
+
+for items in st.session_state.items():                                          # to display all pairs (or .keys() or .values() for individual display)
+  st.write(items)
 
