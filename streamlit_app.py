@@ -26,4 +26,3 @@ if radio_button == 'Option2':
 if radio_button == 'Option3':
   col2.write("You picked `Option3` Conclusion3")
 
-#st.session_state
