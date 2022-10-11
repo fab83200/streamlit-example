@@ -22,8 +22,8 @@ if button:
   st.write("  - The value of my counter is: ", st.session_state.my_counter)
   st.write("  - The value of my boolean is: ", st.session_state.my_boolean)
 
-for key in st.session_state.keys():
-  del st.session_state[key]
+#for key in st.session_state.keys():
+#  del st.session_state[key]
 
 for items in st.session_state.items():                                          # to display all pairs (or .keys() or .values() for individual display)
   st.write(items)
