@@ -1,10 +1,3 @@
-#!pip install -q lime
-#!pip install -q streamlit
-
-#COLAB
-from google.colab import drive                                                  # NEEDED
-drive.mount('/content/gdrive');      
-
 import streamlit as st
 import pandas as pd
 import numpy as np
