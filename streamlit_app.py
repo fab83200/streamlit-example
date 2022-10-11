@@ -11,7 +11,7 @@ Here is my first _tryout_.
 ''')
 
 
-col1, buff, col2 = st.columns([1, .5, 1])                              # sets up columns of standard width
+col1, buff, col2 = st.columns([2, .5, 2])                              # sets up columns of standard width
 
 def lbs_to_kg():
   st.session_state.kg = st.session_state.lbs / 2.2046                 # calls `lbs` and stores it under `kg` after computation
