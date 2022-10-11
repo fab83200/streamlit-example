@@ -1,4 +1,4 @@
-pip install -U scikit-learn
+pip install -q sklearn
 
 import streamlit as st
 import pandas as pd
