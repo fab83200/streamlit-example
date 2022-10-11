@@ -5,8 +5,8 @@ import pandas as pd
 #  '#' introduce a chapter mark.
 #  '_' introduce an italic string.
 
-# "This is my lit Dashboard"
-"Here is my first <i>tryout</i>"
+"#This is my lit Dashboard"
+"Here is my first _tryout_"
 
 
 col1, buff, col2 = st.columns([2, .5, 2])                             # sets up columns of standard width where sum is the total width
