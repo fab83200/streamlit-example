@@ -6,7 +6,7 @@ import pandas as pd
 #  '_' introduce an italic string.
 
 # This is my lit Dashboard
-Here is my first _tryout_.
+Here is my first <i>tryout</i>.
 
 
 col1, buff, col2 = st.columns([2, .5, 2])                             # sets up columns of standard width where sum is the total width
