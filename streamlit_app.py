@@ -14,7 +14,8 @@ st.subheader("Discrete Slider")                                     # creates a 
 rainbow_colors = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', ]   # instanciates the discrete values
 first_color, second_color = st.select_slider(label='Select 2 colors',       # creates a select_slider with Intro Line: 'Select...' and the variables `1st` and `2nd`
                                               options=rainbow_colors,       # sets the options available
-                                              key='my_rainbow'              # names the select_slider
+                                              key='my_rainbow',             # names the select_slider
+                                              on_change=None,               #
                                               value=['orange', 'green'])    # initiates the starting values
 st.write(f"Your choice goes from {first_color} to {second_color}")  # when activated, writes the resulting choices
 
