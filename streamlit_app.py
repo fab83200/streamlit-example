@@ -1,28 +1,27 @@
 import streamlit as st
 import pandas as pd
 
-#Will create a markdown:
-#  '#' introduce a chapter mark.
-#  '_' introduce an italic string.
+col1, buffer_column, col2 = st.columns([2, .5, 2])                    # sets up columns of standard width where sum is the total width
 
-"#This is my lit Dashboard"
-"Here is my first _tryout_"
+features_available = ['Option1', 'Option2', 'Option3']
 
+next = st.button("Next Option")
 
-col1, buff, col2 = st.columns([2, .5, 2])                             # sets up columns of standard width where sum is the total width
+if next:
+  if st.session_state.my_option == 'Option1':
+    st.session_state.my_option = 'Option2'
+  elif st.session_state.my_option == 'Option2':
+    st.session_state.my_option = 'Option3'
+  else:
+    st.session_state.my_option = 'Option1'
 
-def lbs_to_kg():
-  st.session_state.kg = st.session_state.lbs / 2.2046                 # calls `lbs` and stores it under `kg` after computation
+option = col1.radio("Pick an option:", features_available, key="my_option")        # display a radio button widget
 
-def kg_to_lbs():
-  st.session_state.lbs = st.session_state.kg * 2.2046                 # calls `kg` and stores it under `lbs` after computation
+if option == 'Option1':
+  col2.write("You picked `Option1` Conclusion1")
+if option == 'Option2':
+  col2.write("You picked `Option2` Conclusion2")
+if option == 'Option3':
+  col2.write("You picked `Option3` Conclusion3")
 
-with col1:
-  pounds = st.number_input("Pounds",                                  # Name of the number_input
-                           key='lbs',                                 # Name of the variable for the data
-                           on_change= lbs_to_kg)                      # Name of the function to use `on_change`, it would be `on_click` for one-off widgets
-
-with col2:
-  kilogram = st.number_input("Kilos",                                 # Name of the number_input
-                             key='kg',                                # Name of the variable for the data
-                             on_change= kg_to_lbs)                    # Name of the function to use `on_change`, it would be `on_click` for one-off widgets
+st.session_state
